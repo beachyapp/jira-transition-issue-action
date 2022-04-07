@@ -27,27 +27,16 @@ This action will transition an issue in JIRA based on issue key and transition-t
 ## Example usage
 
 ```
-
-public:
-
-uses: actions/jira-transition-issue@....
-
-private:
-
-uses: ./.github/private-actions/jira-transition-issue
-
-
 <!-- get issue-key from branch name-->
 - name: Find JIRA issue key by branch name
   id: issue-key-from-branch-name
-  uses: ./.github/private-actions/jira-get-issue-key
+  uses: beachyapp/jira-get-issue-key-action@v0.1
   with:
     search: '${{ github.event.pull_request.head.ref }}'
-
 <!-- transition issue to a new workflow status -->
 - name: Transition JIRA issue
   if: ${{ steps.issue-key-from-branch-name.outputs.exists }}
-  uses: ./.github/private-actions/jira-transition-issue
+  uses: beachyapp/jira-transition-issue-action@v0.1
   with:
     transition-to: "In Development"
     issue-key: ${{steps.issue-key-from-branch-name.outputs.key}}
