@@ -1,0 +1,26 @@
+name: 'JIRA transition issue'
+description: 'Transition issue to new workflow status'
+inputs:
+  transition-to:
+    description: 'What workflow status you want to transition to?'
+    required: true
+    default: ''
+  issue-key:
+    description: 'The issue key you want to transition'
+    required: true
+    default: ''
+  jira-user-email:
+    description: 'JIRA user email'
+    required: true
+    default: ''
+  jira-api-token:
+    description: 'JIRA API token'
+    required: true
+    default: ''
+  jira-base-url:
+    description: 'JIRA base URL'
+    required: true
+    default: ''
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
