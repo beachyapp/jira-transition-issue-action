@@ -30,13 +30,13 @@ This action will transition an issue in JIRA based on issue key and transition-t
 <!-- get issue-key from branch name-->
 - name: Find JIRA issue key by branch name
   id: issue-key-from-branch-name
-  uses: beachyapp/jira-get-issue-key-action@v0.1
+  uses: beachyapp/jira-get-issue-key-action@v0.2
   with:
     search: '${{ github.event.pull_request.head.ref }}'
 <!-- transition issue to a new workflow status -->
 - name: Transition JIRA issue
   if: ${{ steps.issue-key-from-branch-name.outputs.exists }}
-  uses: beachyapp/jira-transition-issue-action@v0.1
+  uses: beachyapp/jira-transition-issue-action@v0.2
   with:
     transition-to: "In Development"
     issue-key: ${{steps.issue-key-from-branch-name.outputs.key}}
